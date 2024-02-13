@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:visitor_app_new/models/securityModel.dart';
 
 class SecurityApiServices{
   Future<dynamic> sendSecurityData(
@@ -27,6 +28,19 @@ class SecurityApiServices{
     else
     {
       throw Exception("Failed to send");
+    }
+  }
+  Future<List<ViewList>> getSecurityData() async{
+    var client=http.Client();
+    var apiUrl=Uri.parse("http://localhost:3001/api/securities/viewall");
+    var response=await client.get(apiUrl);
+    if(response.statusCode==200)
+    {
+      return viewListFromJson(response.body);
+    }
+    else
+    {
+      return [];
     }
   }
 }
