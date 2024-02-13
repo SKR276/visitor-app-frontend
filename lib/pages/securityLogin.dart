@@ -1,45 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:visitor_app_new/pages/menu.dart';
-import 'package:visitor_app_new/pages/securityLogin.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:visitor_app_new/services/securityServices.dart';
 
-class AdminLogin extends StatefulWidget {
-  const AdminLogin({super.key});
+class SecurityLogin extends StatefulWidget {
+  const SecurityLogin({super.key});
 
   @override
-  State<AdminLogin> createState() => _AdminLoginState();
+  State<SecurityLogin> createState() => _SecurityLoginState();
 }
 
-class _AdminLoginState extends State<AdminLogin> {
+class _SecurityLoginState extends State<SecurityLogin> {
   @override
   Widget build(BuildContext context) {
-    String getName="",getpass="";
-    TextEditingController name=new TextEditingController();
+    String getEmail="",getPass="";
+    TextEditingController email=new TextEditingController();
     TextEditingController password=new TextEditingController();
 
-    void SendAdminData(){
-      if(name.text=="admin" && password.text=="12345")
+    void SendValues() async{
+      final response=await SecurityApiServices().sendLoginData(
+          email.text,
+          password.text);
+      if(response["status"]=="success")
         {
           print("Login Successful");
-          Navigator.push(context, MaterialPageRoute(builder:
-          (context)=>MenuPage()
-          ));
         }
+      else if(response["status"]=="invalid mail id")
+      {
+        print("incorrect mail id");
+      }
       else
-        {
-          print("Incorrect User Info");
-        }
+      {
+        print("incorrect password");
+      }
     }
     return Scaffold(
       body: Container(
         padding: EdgeInsets.all(25),
         width: double.infinity,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.white,
-              Colors.black
-            ]
-          )
+            gradient: LinearGradient(
+                colors: [
+                  Colors.white,
+                  Colors.black
+                ]
+            )
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -50,9 +54,9 @@ class _AdminLoginState extends State<AdminLogin> {
             ),
             SizedBox(height: 45,),
             TextField(
-              controller: name,
+              controller: email,
               decoration: InputDecoration(
-                labelText: "User Name",
+                labelText: "Email ID",
                 border: OutlineInputBorder(),
               ),
             ),
@@ -71,34 +75,15 @@ class _AdminLoginState extends State<AdminLogin> {
               width: 250,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero
-                  )
-                ),
-                onPressed: SendAdminData,
-              child: Text("LOGIN"),),
-            ),
-            SizedBox(height: 30,),
-            SizedBox(
-              height: 60,
-              width: 300,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
                     backgroundColor: Colors.black,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.zero
                     )
                 ),
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder:
-                  (context)=>SecurityLogin()
-                  ));
-              },
-              child: Text("Security click here !!!"),),
-            )
+                onPressed: SendValues,
+                child: Text("LOGIN"),),
+            ),
           ],
         ),
       ),
