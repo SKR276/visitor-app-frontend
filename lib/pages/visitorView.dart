@@ -18,6 +18,10 @@ class _ViewVisitorState extends State<ViewVisitor> {
   }
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text("GateGaurd Log",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 17),),
+      ),
       body: FutureBuilder(
           future: data,
           builder: (context,snapshot){

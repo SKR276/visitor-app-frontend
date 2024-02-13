@@ -39,6 +39,10 @@ class _VisitorAddState extends State<VisitorAdd> {
       }
     }
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text("GateGaurd Log",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 17),),
+      ),
       body: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
