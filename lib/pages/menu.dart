@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:visitor_app_new/pages/addSecurity.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
@@ -26,7 +27,7 @@ class _MenuPageState extends State<MenuPage> {
           children: [
             SizedBox(
               height: 60,
-              width: 300,
+              width: 250,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
@@ -36,14 +37,16 @@ class _MenuPageState extends State<MenuPage> {
                     )
                 ),
                 onPressed: (){
-
+                  Navigator.push(context, MaterialPageRoute(builder:
+                  (context)=>AddSecurity()
+                  ));
                 },
                 child: Text("Add Security"),),
             ),
             SizedBox(height: 20,),
             SizedBox(
               height: 60,
-              width: 300,
+              width: 250,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
@@ -60,7 +63,7 @@ class _MenuPageState extends State<MenuPage> {
             SizedBox(height: 20,),
             SizedBox(
               height: 60,
-              width: 300,
+              width: 250,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
