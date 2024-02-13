@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:visitor_app_new/pages/addSecurity.dart';
 import 'package:visitor_app_new/pages/viewSecurity.dart';
+import 'package:visitor_app_new/pages/visitorView.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
@@ -76,7 +77,9 @@ class _MenuPageState extends State<MenuPage> {
                     )
                 ),
                 onPressed: (){
-
+                  Navigator.push(context, MaterialPageRoute(builder:
+                  (context)=>ViewVisitor()
+                  ));
                 },
                 child: Text("View All Visitors"),),
             ),

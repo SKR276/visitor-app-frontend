@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:visitor_app_new/pages/secMenu.dart';
 import 'package:visitor_app_new/services/securityServices.dart';
 
 class SecurityLogin extends StatefulWidget {
@@ -22,7 +23,14 @@ class _SecurityLoginState extends State<SecurityLogin> {
           password.text);
       if(response["status"]=="success")
         {
+          String securityId=response["userdata"]["_id"].toString();
+          SharedPreferences preferences=await SharedPreferences.getInstance();
+          preferences.setString("securityId", securityId);
+          print("securityId:"+securityId);
           print("Login Successful");
+          Navigator.push(context, MaterialPageRoute(builder:
+          (context)=>SecurityMenu()
+          ));
         }
       else if(response["status"]=="invalid mail id")
       {
