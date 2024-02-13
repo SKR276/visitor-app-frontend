@@ -30,6 +30,10 @@ class _AdminLoginState extends State<AdminLogin> {
         }
     }
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text("GateGaurd Log",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 17),),
+      ),
       body: Container(
         padding: EdgeInsets.all(25),
         width: double.infinity,

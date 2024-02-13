@@ -16,7 +16,8 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AdminLogin(),
+      home: AdminLogin(
+      ),
     );
   }
 }
