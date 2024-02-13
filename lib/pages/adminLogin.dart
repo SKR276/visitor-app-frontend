@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:visitor_app_new/pages/menu.dart';
 
 class AdminLogin extends StatefulWidget {
   const AdminLogin({super.key});
@@ -18,6 +19,9 @@ class _AdminLoginState extends State<AdminLogin> {
       if(name.text=="admin" && password.text=="12345")
         {
           print("Login Successful");
+          Navigator.push(context, MaterialPageRoute(builder:
+          (context)=>MenuPage()
+          ));
         }
       else
         {
@@ -48,7 +52,10 @@ class _AdminLoginState extends State<AdminLogin> {
               controller: name,
               decoration: InputDecoration(
                 labelText: "User Name",
-                border: OutlineInputBorder()
+                border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red)
+                  )
               ),
             ),
             SizedBox(height: 15,),
@@ -56,7 +63,10 @@ class _AdminLoginState extends State<AdminLogin> {
               controller: password,
               decoration: InputDecoration(
                 labelText: "Password",
-                border: OutlineInputBorder()
+                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.red)
+                )
               ),
             ),
             SizedBox(height: 30,),
@@ -65,6 +75,8 @@ class _AdminLoginState extends State<AdminLogin> {
               width: 250,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.black,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero
                   )
@@ -78,6 +90,8 @@ class _AdminLoginState extends State<AdminLogin> {
               width: 300,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.black,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.zero
                     )
