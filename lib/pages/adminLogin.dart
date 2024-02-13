@@ -53,20 +53,15 @@ class _AdminLoginState extends State<AdminLogin> {
               decoration: InputDecoration(
                 labelText: "User Name",
                 border: OutlineInputBorder(),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.red)
-                  )
               ),
             ),
             SizedBox(height: 15,),
             TextField(
               controller: password,
+              obscureText: true,
               decoration: InputDecoration(
                 labelText: "Password",
                 border: OutlineInputBorder(),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.red)
-                )
               ),
             ),
             SizedBox(height: 30,),
