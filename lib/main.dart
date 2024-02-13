@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:visitor_app_new/pages/adminLogin.dart';
 
 void main(){
   runApp(MainPage());
@@ -15,6 +16,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      home: AdminLogin(),
     );
   }
 }
